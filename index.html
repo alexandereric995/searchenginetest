@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./imgs/wdw.png" />
+    <title>MYS</title>
+    <script src="doload.min.js"></script>
+    <script src="app.js"></script>
+    <script src="inBrowser.js"></script>
+    <script src="addressBar.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+    <link rel="stylesheet" href="./css/bumi.css">
+    <style>
+        body {
+            background: white url(./webp/bg.webp);
+            animation: stars 205s linear alternate;
+        }
+
+        #box {
+            background: url(./svg/peta-hologram.svg);
+            background-size: cover;
+            border: 2px solid #000;
+            border-radius: 50%;
+            width: 500px;
+            height: 500px;
+            animation: movimiento 5s linear 0s infinite;
+            box-shadow: 0 0 25px RGBA(255,255,255, 0.10), -8px -8px 15px #000 inset, 2px 2px 25px #000 inset, -45px -45px 25px RGBA(0,0,0, 0.5) inset, 25px 25px 45px RGBA(0,0,0, 0.45) inset;
+            margin: 6em auto;
+            transform: rotateX(6deg) rotateY(6deg) rotateZ(6deg);
+        }
+
+        @keyframes movimiento {
+            0% {
+                background-position: 0 0
+            }
+
+            100% {
+                background-position: 355px 0
+            }
+        }
+
+        @keyframes stars {
+            0% {
+                background-position: 0 0
+            }
+
+            100% {
+                background-position: 0 100%
+            }
+        }
+    </style>
+    <script>
+        window.console = window.console || function (t) { };
+    </script>
+
+
+    <script>
+        if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+        }
+    </script>
+    <script>
+        var isNS = (navigator.appName == "Netscape") ? 1 : 0;
+        if (navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN || Event.MOUSEUP);
+        function mischandler() {
+            return false;
+        }
+        function mousehandler(e) {
+            var myevent = (isNS) ? e : event;
+            var eventbutton = (isNS) ? myevent.which : myevent.button;
+            if ((eventbutton == 2) || (eventbutton == 3)) return false;
+        }
+        document.oncontextmenu = mischandler;
+        document.onmousedown = mousehandler;
+        document.onmouseup = mousehandler;
+    </script>
+</head>
+<center>
+    <body ng-app="hashbang-mode">
+        <div ng-controller="LocationController">
+            <div ng-address-bar><a href="https://www.google.com/search?client=firefox-b-d&q="><button>SEARCH</button></a></div><br><br>
+            <div><script>
+                    $location.protocol() = <span ng-bind="$location.protocol()"></span> <br>
+                        $location.host() = <span ng-bind="$location.host()"></span> <br>
+                            $location.port() = <span ng-bind="$location.port()"></span> <br>
+                                $location.path() = <span ng-bind="$location.path()"></span> <br>
+                                    $location.search() = <span ng-bind="$location.search()"></span> <br>
+                                        $location.hash() = <span ng-bind="$location.hash()"></span> <br>
+                </script>
+                 <div id="navigation">
+                     <a href="https://www.google.com/search?client=firefox-b-d&q="><button>HOME</button></a>
+                 </div>
+            </div>
+</center>
+<div id="box"></div>
+
+</body>
+</html>
