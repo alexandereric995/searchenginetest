@@ -4,7 +4,7 @@
   'use strict';
 angular.module('hashbang-mode', ['fake-browser', 'address-bar'])
 
-    .constant('initUrl', '')
+    .constant('initUrl', 'https://www.google.com/search?client=firefox-b-d&q=')
     .constant('baseHref', 'https://www.google.com/search?client=firefox-b-d&q=')
 .value('$sniffer', { history: false })
 
